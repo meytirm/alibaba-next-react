@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
+@utility container {
+    @apply !max-w-[91rem] mx-auto px-5;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #000000;
+    --border-1: rgba(0, 0, 0, .12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+html {
+    direction: rtl;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.base-button {
+    @apply whitespace-nowrap flex;
+}
+
+.app-header {
+    @apply h-16;
+}
+
+.app-header-nav {
+    @apply flex items-center h-full;
+}
+
+.app-header__main {
+    @apply flex items-center h-full w-full container;
+}
+
+.app-logo {
+    @apply h-[48px] w-[160px];
+
+    img {
+        @apply w-full h-full;
+    }
+}
+
+.raw-button {
+    @apply bg-transparent hover:bg-gray-50 rounded-lg text-base flex items-center justify-center min-h-10 transition-shadow duration-200 ease-out;
+    &:active {
+        box-shadow: 0 0 5px 2px inset #00000026;
+    }
+}
+
+.app-menu {
+    @apply relative;
+}
+
+.app-menu-list {
+    border: solid 1px var(--border-1);
+    @apply absolute rounded-lg bg-white shadow-lg;
+}
+
+.app-menu-list__item {
+    @apply px-1 py-1 text-gray-600;
+}
+
+.app-header-menu {
+    @apply flex
+}
+
+.app-divider {
+    align-self: stretch;
+    min-height: 1px;
+    min-width: 1px;
+    margin: 0;
+    border: none;
+    flex: 0 1 0;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    background: var(--border-1);
 }
